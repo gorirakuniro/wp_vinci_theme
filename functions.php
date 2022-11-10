@@ -251,7 +251,6 @@ add_action('init', 'create_post_type');
 
 function create_post_type()
 {
-
     register_post_type(
         'news',
         array(
@@ -277,18 +276,6 @@ function create_post_type()
             'hierarchical' => true,
             'public' => true,
             'show_in_rest' => true,
-        )
-    );
-
-    register_taxonomy(
-        'news-tag',
-        'news',
-        array(
-            'label' => 'タグ',
-            'hierarchical' => false,
-            'public' => true,
-            'show_in_rest' => true,
-            'update_count_callback' => '_update_post_term_count',
         )
     );
 }

@@ -8,6 +8,36 @@ Template Name: News
 <?php get_header(); ?>
 
 
+<!-- カスタム投稿タイプを表示する -->
+<?php
+$args = array(
+    'post_type' => 'news',
+    'posts_per_page' => -1
+);
+
+$my_query = new WP_Query($args);
+?>
+
+<?php while ($my_query->have_posts()) : $my_query->the_post(); ?>
+
+    <p><?php the_time(get_option('date_format')); ?></p>
+    <p><?php the_title(); ?></p>
+    <p> <?php echo get_the_excerpt(); ?></p>
+    <?php
+    if ($terms = get_the_terms($post->ID, 'news-cat')) {
+        foreach ($terms as $term) {
+            echo esc_html($term->slug);
+        }
+    }
+    ?>
+    <div><img width="300" src="<?php the_post_thumbnail_url(); ?>" alt="" /></div>
+
+
+<?php endwhile; ?>
+
+<?php wp_reset_postdata(); ?>
+
+
 <div class="news">
     <div class="news__title">News</div>
 
