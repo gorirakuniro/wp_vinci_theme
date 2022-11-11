@@ -6,9 +6,14 @@
         <div class="workitem">
             <div class="workitem__left">
                 <ul class="workitems__list">
+
                     <li class="workitems__img">
                         <iframe src="<?php echo catch_post_movie(); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </li>
+                    <?php
+                    echo catch_post_movie();
+                    ?>
+
 
                     <!-- 画像 -->
                     <?php getImage(); ?>

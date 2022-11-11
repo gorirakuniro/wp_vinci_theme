@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<h2>front-page</h2>
 
 <main class="top_main">
     <div class="main__text">
@@ -31,36 +30,27 @@
     </a>
     <div class="topnews__news">
         <ul class="topnews__list">
+            <!-- カスタム投稿タイプを表示する -->
+            <?php
+            $args = array(
+                'post_type' => 'news',
+                'posts_per_page' => 6
+            );
 
-            <li class="topnews__item">
-                <div class="topnews__date"><?php the_time('Y.m.d'); ?></div>
-                <div class="topnews__text">新しいやつ</div>
-            </li>
+            $my_query = new WP_Query($args);
+            ?>
 
-            <li class="topnews__item">
-                <div class="topnews__date">2021.8.3</div>
-                <div class="topnews__text">カフェのロゴデザインを制作します</div>
-            </li>
+            <?php while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-            <li class="topnews__item">
-                <div class="topnews__date">2021.6.29</div>
-                <div class="topnews__text">大麻啓発映像の撮影が終了いたしました!</div>
-            </li>
+                <li class="topnews__item">
+                    <div class="topnews__date"><?php the_time('Y.m.d'); ?></div>
+                    <div class="topnews__text"><?php the_title(); ?></div>
+                </li>
 
-            <li class="topnews__item">
-                <div class="topnews__date">2021.5.30</div>
-                <div class="topnews__text">大麻啓発映像を制作します</div>
-            </li>
+            <?php endwhile; ?>
 
-            <li class="topnews__item">
-                <div class="topnews__date">2021.5.23</div>
-                <div class="topnews__text">オンライン学文祭が開催されました</div>
-            </li>
+            <?php wp_reset_postdata(); ?>
 
-            <li class="topnews__item">
-                <div class="topnews__date">2021.5.5</div>
-                <div class="topnews__text">vinciの公式ホームページが出来ました</div>
-            </li>
         </ul>
     </div>
 </div>
@@ -98,7 +88,7 @@
             Vinciとは、2019年に創設された九州産業大学を中心としたメディア系愛好会です。<br />
             現在、九州産業大学の中央会館を拠点に活動をしています。<br />
             <br />
-            学園祭や日々の活動で作品やポロジェクトをチームで作成することです。 企業やサークルなどのさまざまなパートナーとともにアイディアで課題にチャレンジしていくこと。 そして、世の中に新しいものを生み出すこと
+            学園祭や日々の活動で作品やポロジェクトをチームで作成することです。 企業やサークルｔどのさまざまなパートナーとともにアイディアで課題にチャレンジしていくこと。 そして、世の中に新しいものを生み出すこと
         </div>
     </div>
     <?php

@@ -11,7 +11,7 @@ Template Name: About
 <div class="about">
     <div class="about__title">About</div>
     <div class="about__img">
-        <img src="./works/001-video-covid19/0.jpg" alt="" />
+        <img src="<?php header_image(); ?>" alt="" />
     </div>
     <div class="about__main">
         <div class="about__main--item">vinciとは？</div>
